@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="01-hook-problem" data-width="1920" data-height="1080" data-duration="11.372">
+  <div class="bg-grid"></div>
+  <div class="glow" style="width:60cqw;height:60cqw;background:radial-gradient(circle, #00D4FF 0%, transparent 70%);top:20cqw;left:20cqw;"></div>
+  <div class="center-title" style="position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);text-align:center;width:80cqw;">
+    <div class="micro" style="margin-bottom:2cqw;opacity:0;">BRIDGE AI TUTORIAL</div>
+    <div class="h1" style="opacity:0;">第一次用 AI 工具？</div>
+    <div class="body" style="margin-top:2cqw;opacity:0;">是不是被各种 API Key 和配置搞懵了？</div>
+  </div>
+  <div class="pain-wrap" style="position:absolute;inset:0;pointer-events:none;">
+    <div class="pain-item" style="position:absolute;left:12cqw;top:18cqw;"><div class="tag">模型</div></div>
+    <div class="pain-item" style="position:absolute;left:76cqw;top:22cqw;"><div class="tag">密钥</div></div>
+    <div class="pain-item" style="position:absolute;left:8cqw;top:62cqw;"><div class="tag">配置文件</div></div>
+    <div class="pain-item" style="position:absolute;left:80cqw;top:60cqw;"><div class="tag">Base URL</div></div>
+    <div class="tool-chip" style="position:absolute;left:18cqw;top:30cqw;"><div class="icon-chip" style="background:#10A37F;">C</div><div class="body" style="text-align:center;font-size:1.1cqw;margin-top:0.5cqw;">ChatGPT</div></div>
+    <div class="tool-chip" style="position:absolute;left:72cqw;top:34cqw;"><div class="icon-chip" style="background:#CC785C;">Cl</div><div class="body" style="text-align:center;font-size:1.1cqw;margin-top:0.5cqw;">Claude</div></div>
+    <div class="tool-chip" style="position:absolute;left:20cqw;top:50cqw;"><div class="icon-chip" style="background:#3B82F6;">Cu</div><div class="body" style="text-align:center;font-size:1.1cqw;margin-top:0.5cqw;">Cursor</div></div>
+    <div class="tool-chip" style="position:absolute;left:74cqw;top:48cqw;"><div class="icon-chip" style="background:#7C3AED;">O</div><div class="body" style="text-align:center;font-size:1.1cqw;margin-top:0.5cqw;">OpenCode</div></div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.center-title .micro', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 0.2)
+    .fromTo('.center-title .h1', {opacity:0, y:30}, {opacity:1, y:0, duration:0.9, ease:'power3.out'}, 0.5)
+    .fromTo('.center-title .body', {opacity:0, y:20}, {opacity:1, y:0, duration:0.7, ease:'power3.out'}, 1.0)
+    .fromTo('.pain-item', {opacity:0, scale:0.6, x:(i,t)=>{const vals=[-30,30,-20,20];return vals[i];}}, {opacity:1, scale:1, x:0, duration:0.7, stagger:0.12, ease:'back.out(1.4)'}, 2.8)
+    .fromTo('.tool-chip', {opacity:0, scale:0.5}, {opacity:1, scale:1, duration:0.7, stagger:0.1, ease:'back.out(1.6)'}, 3.4)
+    .to('.pain-wrap', {scale:1.06, duration:2.0, ease:'power1.inOut', yoyo:true, repeat:1}, 4.5);
+  window.__timelines = window.__timelines || {}; window.__timelines['01-hook-problem'] = tl;
+</script>
+</body>
+</html>

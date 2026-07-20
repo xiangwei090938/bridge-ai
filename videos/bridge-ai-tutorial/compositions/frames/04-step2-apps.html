@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="04-step2-apps" data-width="1920" data-height="1080" data-duration="15.092">
+  <div class="bg-grid"></div>
+  <div class="micro" style="position:absolute;left:5cqw;top:4cqw;">STEP 02</div>
+  <div class="h2" style="position:absolute;left:5cqw;top:7cqw;">管理应用</div>
+  <div class="tabs" style="position:absolute;left:5cqw;top:14cqw;display:flex;gap:1cqw;">
+    <div class="tag" style="opacity:0.5;">全部</div>
+    <div class="tag" style="background:rgba(0,212,255,0.2);color:var(--primary);">桌面端</div>
+  </div>
+  <div class="scan-line" style="position:absolute;left:5cqw;top:20cqw;width:56cqw;height:2px;background:var(--primary);box-shadow:0 0 1cqw var(--primary);opacity:0;"></div>
+  <div class="tools-grid" style="position:absolute;left:5cqw;top:20cqw;width:56cqw;height:58cqw;display:grid;grid-template-columns:1fr 1fr;gap:1.5cqw;">
+    <div class="tool-card card" data-tool="ChatGPT" style="padding:2cqw;"><div style="display:flex;align-items:center;gap:1cqw;"><div class="icon-chip" style="background:#10A37F;width:4cqw;height:4cqw;font-size:1.4cqw;">C</div><div class="h3" style="font-size:2cqw;">ChatGPT</div></div><div class="body" style="margin-top:1cqw;font-size:1.1cqw;">已安装</div></div>
+    <div class="tool-card card" data-tool="OpenCode" style="padding:2cqw;"><div style="display:flex;align-items:center;gap:1cqw;"><div class="icon-chip" style="background:#7C3AED;width:4cqw;height:4cqw;font-size:1.4cqw;">O</div><div class="h3" style="font-size:2cqw;">OpenCode</div></div><div class="body" style="margin-top:1cqw;font-size:1.1cqw;">已安装</div></div>
+    <div class="tool-card card" data-tool="Claude" style="padding:2cqw;opacity:0.45;"><div style="display:flex;align-items:center;gap:1cqw;"><div class="icon-chip" style="background:#CC785C;width:4cqw;height:4cqw;font-size:1.4cqw;">Cl</div><div class="h3" style="font-size:2cqw;">Claude</div></div><div class="body" style="margin-top:1cqw;font-size:1.1cqw;">未安装</div></div>
+    <div class="tool-card card" data-tool="Cursor" style="padding:2cqw;opacity:0.45;"><div style="display:flex;align-items:center;gap:1cqw;"><div class="icon-chip" style="background:#3B82F6;width:4cqw;height:4cqw;font-size:1.4cqw;">Cu</div><div class="h3" style="font-size:2cqw;">Cursor</div></div><div class="body" style="margin-top:1cqw;font-size:1.1cqw;">未安装</div></div>
+  </div>
+  <div class="model-panel card" style="position:absolute;left:63cqw;top:20cqw;width:32cqw;height:35cqw;display:none;">
+    <div style="padding:2cqw;">
+      <div class="h3" style="font-size:2cqw;margin-bottom:1cqw;">选择模型</div>
+      <label class="model-option" style="display:flex;align-items:center;gap:1cqw;padding:1cqw;border-radius:0.8cqw;background:rgba(255,255,255,0.03);margin-bottom:0.8cqw;"><div class="radio" style="width:1.4cqw;height:1.4cqw;border-radius:50%;border:2px solid var(--muted);"></div><div class="icon-chip" style="background:#10A37F;width:3cqw;height:3cqw;font-size:1cqw;">O</div><div><div style="font-weight:600;font-size:1.3cqw;">OpenAI</div><div class="body" style="font-size:1cqw;">gpt-4o</div></div></label>
+      <label class="model-option" style="display:flex;align-items:center;gap:1cqw;padding:1cqw;border-radius:0.8cqw;background:rgba(0,212,255,0.08);border:1px solid var(--primary);"><div class="radio" style="width:1.4cqw;height:1.4cqw;border-radius:50%;border:2px solid var(--primary);background:var(--primary);"></div><div class="icon-chip" style="background:#3B82F6;width:3cqw;height:3cqw;font-size:1cqw;">D</div><div><div style="font-weight:600;font-size:1.3cqw;">DeepSeek</div><div class="body" style="font-size:1cqw;">deepseek-chat</div></div></label>
+    </div>
+  </div>
+  <div class="launch-btn pill" style="position:absolute;left:63cqw;top:58cqw;display:none;opacity:0.6;">启动应用</div>
+  <div class="log card" style="position:absolute;left:5cqw;top:80cqw;width:90cqw;padding:1.5cqw;">
+    <div class="body" style="font-size:1.1cqw;font-family:'Space Grotesk',monospace;">操作日志</div>
+    <div class="log-line" style="opacity:0;margin-top:0.6cqw;font-size:1cqw;color:var(--muted);">准备同步模型配置: DeepSeek (deepseek-chat)</div>
+    <div class="log-line" style="opacity:0;margin-top:0.4cqw;font-size:1cqw;color:var(--muted);">正在同步配置到 OpenCode...</div>
+    <div class="log-line" style="opacity:0;margin-top:0.4cqw;font-size:1cqw;color:#34D399;">配置同步完成，正在启动 OpenCode...</div>
+  </div>
+  <div class="cursor" style="left:10cqw;top:80cqw;opacity:0;"></div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.tabs .tag', {opacity:0, y:-10}, {opacity:(i)=>i===0?0.5:1, y:0, duration:0.4, stagger:0.1, ease:'power3.out'}, 0.2)
+    .fromTo('.tool-card', {opacity:0, y:20}, {opacity:1, y:0, duration:0.5, stagger:0.1, ease:'power3.out'}, 0.5)
+    .fromTo('.scan-line', {opacity:0, y:0}, {opacity:1, y:'58cqw', duration:1.2, ease:'power1.inOut'}, 1.0)
+    .to('.tool-card[data-tool="ChatGPT"], .tool-card[data-tool="OpenCode"]', {borderColor:'var(--primary)', background:'rgba(0,212,255,0.08)', duration:0.4}, 2.0)
+    .to('.cursor', {opacity:1, x:'20cqw', y:'-52cqw', duration:0.7, ease:'power3.inOut'}, 2.4)
+    .to('.tool-card[data-tool="OpenCode"]', {scale:1.03, duration:0.2}, 3.0)
+    .to('.cursor', {scale:0.85, duration:0.15, yoyo:true, repeat:1}, 3.1)
+    .set('.model-panel', {display:'block'})
+    .fromTo('.model-panel', {opacity:0, x:20}, {opacity:1, x:0, duration:0.5, ease:'power3.out'}, 3.3)
+    .set('.launch-btn', {display:'inline-flex'})
+    .to('.launch-btn', {opacity:1, duration:0.4}, 4.0)
+    .to('.cursor', {x:'62cqw', y:'-20cqw', duration:0.6, ease:'power3.inOut'}, 4.4)
+    .to('.launch-btn', {background:'#34D399', color:'#052e16', duration:0.2}, 4.9)
+    .to('.cursor', {scale:0.85, duration:0.15, yoyo:true, repeat:1}, 5.0)
+    .to('.log-line', {opacity:1, duration:0.3, stagger:0.4}, 5.4)
+    .to('.tool-card[data-tool="OpenCode"]', {borderColor:'#34D399', background:'rgba(52,211,153,0.08)', duration:0.4}, 6.4);
+  window.__timelines = window.__timelines || {}; window.__timelines['04-step2-apps'] = tl;
+</script>
+</body>
+</html>

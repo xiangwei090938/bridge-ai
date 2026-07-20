@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="09-cta" data-width="1920" data-height="1080" data-duration="3.984">
+  <div class="bg-grid"></div>
+  <div class="glow" style="width:60cqw;height:60cqw;background:radial-gradient(circle, #00D4FF 0%, transparent 70%);top:20cqw;left:20cqw;"></div>
+  <div class="logo-cta" style="position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);text-align:center;">
+    <img class="logo-img" src="assets/logo/logo-horizontal.svg" style="width:24cqw;filter:drop-shadow(0 0 2cqw rgba(0,212,255,0.4));" />
+    <div class="cta-btn pill" style="display:none;margin-top:3cqw;background:var(--gradient);font-size:2cqw;padding:1cqw 4cqw;">立即开始</div>
+  </div>
+  <div class="cta-text h2" style="position:absolute;left:50%;top:78%;transform:translate(-50%,-50%);text-align:center;opacity:0;">开启你的 AI 之旅</div>
+  <div class="cursor" style="left:50cqw;top:90cqw;opacity:0;"></div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.logo-img', {opacity:0, scale:0.8}, {opacity:1, scale:1, duration:0.7, ease:'back.out(1.4)'}, 0.2)
+    .to('.logo-img', {scale:0.6, opacity:0, duration:0.4, ease:'power3.in'}, 0.9)
+    .set('.cta-btn', {display:'inline-flex'})
+    .fromTo('.cta-btn', {opacity:0, scale:0.5}, {opacity:1, scale:1, duration:0.6, ease:'back.out(1.6)'}, 1.1)
+    .fromTo('.cta-text', {opacity:0, y:20}, {opacity:1, y:0, duration:0.5, ease:'power3.out'}, 1.6)
+    .to('.cursor', {opacity:1, y:'-43cqw', duration:0.5, ease:'power3.inOut'}, 1.9)
+    .to('.cursor', {scale:0.85, duration:0.15, yoyo:true, repeat:1}, 2.3)
+    .to('.cta-btn', {boxShadow:'0 0 3cqw rgba(0,212,255,0.6)', duration:0.3}, 2.4)
+    .to('.cursor', {opacity:0, duration:0.3}, 2.6);
+  window.__timelines = window.__timelines || {}; window.__timelines['09-cta'] = tl;
+</script>
+</body>
+</html>

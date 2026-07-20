@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="08-summary" data-width="1920" data-height="1080" data-duration="5.536">
+  <div class="bg-grid"></div>
+  <div class="h2" style="position:absolute;left:50%;top:10cqw;transform:translateX(-50%);text-align:center;">三步就能上手</div>
+  <div class="steps" style="position:absolute;left:10cqw;top:28cqw;width:80cqw;display:flex;justify-content:center;gap:4cqw;">
+    <div class="step card" style="width:22cqw;padding:2.5cqw;text-align:center;opacity:0;">
+      <div class="step-num" style="margin:0 auto;">01</div>
+      <div class="h3" style="font-size:2.2cqw;margin-top:1.5cqw;">配置模型</div>
+      <div class="body" style="font-size:1.2cqw;margin-top:0.8cqw;">选择供应商，填入 API Key</div>
+    </div>
+    <div class="step card" style="width:22cqw;padding:2.5cqw;text-align:center;opacity:0;">
+      <div class="step-num" style="margin:0 auto;">02</div>
+      <div class="h3" style="font-size:2.2cqw;margin-top:1.5cqw;">管理应用</div>
+      <div class="body" style="font-size:1.2cqw;margin-top:0.8cqw;">自动检测，一键启动同步</div>
+    </div>
+    <div class="step card" style="width:22cqw;padding:2.5cqw;text-align:center;opacity:0;">
+      <div class="step-num" style="margin:0 auto;">03</div>
+      <div class="h3" style="font-size:2.2cqw;margin-top:1.5cqw;">AI 对话</div>
+      <div class="body" style="font-size:1.2cqw;margin-top:0.8cqw;">直接提问，实时获得回复</div>
+    </div>
+  </div>
+  <div class="logo-end" style="position:absolute;left:50%;top:74cqw;transform:translateX(-50%);opacity:0;">
+    <img src="assets/logo/logo-horizontal.svg" style="width:18cqw;" />
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.h2', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 0.2)
+    .fromTo('.step', {opacity:0, y:30}, {opacity:1, y:0, duration:0.7, stagger:0.2, ease:'back.out(1.4)'}, 0.6)
+    .to('.step', {borderColor:'var(--primary)', background:'rgba(0,212,255,0.08)', duration:0.4, stagger:0.25}, 1.6)
+    .fromTo('.logo-end', {opacity:0, y:20}, {opacity:1, y:0, duration:0.7, ease:'power3.out'}, 3.0);
+  window.__timelines = window.__timelines || {}; window.__timelines['08-summary'] = tl;
+</script>
+</body>
+</html>

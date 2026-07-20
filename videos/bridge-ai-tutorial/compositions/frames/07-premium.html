@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="07-premium" data-width="1920" data-height="1080" data-duration="5.852">
+  <div class="bg-grid"></div>
+  <div class="h2 gradient-text" style="position:absolute;left:50%;top:10cqw;transform:translateX(-50%);text-align:center;">高级版会员</div>
+  <div class="features" style="position:absolute;left:25cqw;top:26cqw;width:50cqw;display:flex;flex-direction:column;gap:1.5cqw;">
+    <div class="feature" style="display:flex;align-items:center;gap:1.5cqw;opacity:0;"><div class="check" style="width:2.5cqw;height:2.5cqw;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;color:var(--muted);">✓</div><div class="h3" style="font-size:2cqw;">批量配置导入导出</div></div>
+    <div class="feature" style="display:flex;align-items:center;gap:1.5cqw;opacity:0;"><div class="check" style="width:2.5cqw;height:2.5cqw;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;color:var(--muted);">✓</div><div class="h3" style="font-size:2cqw;">一键本地模型部署</div></div>
+    <div class="feature" style="display:flex;align-items:center;gap:1.5cqw;opacity:0;"><div class="check" style="width:2.5cqw;height:2.5cqw;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;color:var(--muted);">✓</div><div class="h3" style="font-size:2cqw;">自定义 Prompt 模板库</div></div>
+    <div class="feature" style="display:flex;align-items:center;gap:1.5cqw;opacity:0;"><div class="check" style="width:2.5cqw;height:2.5cqw;border-radius:50%;background:rgba(0,212,255,0.15);border:1px solid var(--card-border);display:flex;align-items:center;justify-content:center;color:var(--muted);">✓</div><div class="h3" style="font-size:2cqw;">C 盘缓存自动迁移</div></div>
+  </div>
+  <div class="pill" style="position:absolute;left:50%;top:74cqw;transform:translateX(-50%);background:var(--gradient);">解锁全部高级功能</div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.h2', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 0.2)
+    .fromTo('.feature', {opacity:0, x:-20}, {opacity:1, x:0, duration:0.5, stagger:0.25, ease:'power3.out'}, 0.6)
+    .to('.check', {background:'var(--primary)', color:'var(--bg)', borderColor:'var(--primary)', duration:0.3, stagger:0.25}, 1.0)
+    .fromTo('.pill', {opacity:0, scale:0.9}, {opacity:1, scale:1, duration:0.6, ease:'back.out(1.4)'}, 3.0);
+  window.__timelines = window.__timelines || {}; window.__timelines['07-premium'] = tl;
+</script>
+</body>
+</html>

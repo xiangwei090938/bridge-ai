@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="03-step1-config" data-width="1920" data-height="1080" data-duration="12.5">
+  <div class="bg-grid"></div>
+  <div class="micro" style="position:absolute;left:5cqw;top:4cqw;">STEP 01</div>
+  <div class="h2" style="position:absolute;left:5cqw;top:7cqw;">配置模型</div>
+  <div class="ui-panel card" style="position:absolute;left:5cqw;top:16cqw;width:52cqw;height:70cqw;">
+    <div style="padding:2cqw;">
+      <div class="h3" style="margin-bottom:1.5cqw;">已配置模型</div>
+      <div class="empty" style="padding:4cqw;text-align:center;color:var(--muted);border:1.5px dashed var(--card-border);border-radius:1cqw;">暂无配置</div>
+      <div class="model-card" style="display:none;align-items:center;gap:1.5cqw;margin-top:1.5cqw;padding:1.5cqw;border-radius:1cqw;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);">
+        <div class="icon-chip" style="background:#3B82F6;width:4cqw;height:4cqw;font-size:1.4cqw;">D</div>
+        <div>
+          <div style="font-weight:600;font-size:1.4cqw;">DeepSeek</div>
+          <div class="body" style="font-size:1.1cqw;">deepseek-chat</div>
+        </div>
+        <div class="tag" style="margin-left:auto;background:rgba(5,166,105,0.15);color:#34D399;border-color:rgba(52,211,153,0.4);">已连接</div>
+      </div>
+    </div>
+  </div>
+  <div class="ui-panel right card" style="position:absolute;left:59cqw;top:16cqw;width:36cqw;height:70cqw;">
+    <div style="padding:2cqw;">
+      <div class="h3" style="margin-bottom:1.5cqw;">模型供应商</div>
+      <div class="supplier-list" style="display:flex;flex-direction:column;gap:1cqw;">
+        <div class="supplier" data-name="OpenAI" style="display:flex;align-items:center;padding:1cqw;border-radius:0.8cqw;background:rgba(255,255,255,0.03);"><div class="icon-chip" style="background:#10A37F;width:3.5cqw;height:3.5cqw;font-size:1.2cqw;">O</div><div style="flex:1;margin-left:1cqw;"><div style="font-weight:600;font-size:1.3cqw;">OpenAI</div><div class="body" style="font-size:1cqw;">openai.com</div></div><div class="tag" style="padding:0.4cqw 1cqw;font-size:1cqw;">+</div></div>
+        <div class="supplier" data-name="DeepSeek" style="display:flex;align-items:center;padding:1cqw;border-radius:0.8cqw;border:1.5px solid var(--primary);background:rgba(0,212,255,0.08);"><div class="icon-chip" style="background:#3B82F6;width:3.5cqw;height:3.5cqw;font-size:1.2cqw;">D</div><div style="flex:1;margin-left:1cqw;"><div style="font-weight:600;font-size:1.3cqw;">DeepSeek</div><div class="body" style="font-size:1cqw;">deepseek.com</div></div><div class="tag" style="padding:0.4cqw 1cqw;font-size:1cqw;">+</div></div>
+        <div class="supplier" data-name="Anthropic" style="display:flex;align-items:center;padding:1cqw;border-radius:0.8cqw;background:rgba(255,255,255,0.03);"><div class="icon-chip" style="background:#CC785C;width:3.5cqw;height:3.5cqw;font-size:1.2cqw;">A</div><div style="flex:1;margin-left:1cqw;"><div style="font-weight:600;font-size:1.3cqw;">Anthropic</div><div class="body" style="font-size:1cqw;">anthropic.com</div></div><div class="tag" style="padding:0.4cqw 1cqw;font-size:1cqw;">+</div></div>
+      </div>
+      <div class="config-form" style="display:none;margin-top:1.5cqw;padding:1.5cqw;border-radius:1cqw;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.35);">
+        <div class="body" style="font-size:1.2cqw;margin-bottom:1cqw;">模型 ID</div>
+        <div class="input" style="padding:0.8cqw 1cqw;border-radius:0.6cqw;background:rgba(255,255,255,0.05);border:1px solid var(--card-border);font-family:'Space Grotesk';font-size:1.2cqw;">deepseek-chat</div>
+        <div class="body" style="font-size:1.2cqw;margin:1cqw 0 0.5cqw;">API Key</div>
+        <div class="input" style="padding:0.8cqw 1cqw;border-radius:0.6cqw;background:rgba(255,255,255,0.05);border:1px solid var(--card-border);font-family:'Space Grotesk';font-size:1.2cqw;">sk-••••••••••••••••</div>
+        <div class="pill add-btn" style="margin-top:1.2cqw;width:100%;opacity:0.6;">添加配置</div>
+      </div>
+    </div>
+  </div>
+  <div class="cursor" style="left:10cqw;top:80cqw;opacity:0;"></div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.ui-panel', {opacity:0, x:-30}, {opacity:1, x:0, duration:0.7, stagger:0.15, ease:'power3.out'}, 0.2)
+    .fromTo('.supplier', {opacity:0, x:20}, {opacity:1, x:0, duration:0.5, stagger:0.1, ease:'power3.out'}, 0.8)
+    .to('.cursor', {opacity:1, x:'62cqw', y:'-55cqw', duration:0.8, ease:'power3.inOut'}, 2.0)
+    .to('.supplier[data-name="DeepSeek"]', {scale:1.03, duration:0.2}, 2.6)
+    .to('.cursor', {scale:0.85, duration:0.15, yoyo:true, repeat:1}, 2.7)
+    .set('.config-form', {display:'block'})
+    .fromTo('.config-form', {opacity:0, y:10}, {opacity:1, y:0, duration:0.5, ease:'power3.out'}, 2.9)
+    .fromTo('.config-form .input', {width:'0%'}, {width:'100%', duration:0.6, ease:'power3.out'}, 3.5)
+    .to('.add-btn', {opacity:1, duration:0.3}, 4.3)
+    .to('.cursor', {x:'64cqw', y:'-22cqw', duration:0.5, ease:'power3.inOut'}, 4.6)
+    .to('.add-btn', {background:'#34D399', color:'#052e16', duration:0.2}, 5.0)
+    .to('.cursor', {scale:0.85, duration:0.15, yoyo:true, repeat:1}, 5.1)
+    .set('.model-card', {display:'flex'})
+    .fromTo('.model-card', {opacity:0, x:-20}, {opacity:1, x:0, duration:0.6, ease:'back.out(1.4)'}, 5.3)
+    .to('.empty', {opacity:0, height:0, duration:0.3}, 5.4);
+  window.__timelines = window.__timelines || {}; window.__timelines['03-step1-config'] = tl;
+</script>
+</body>
+</html>

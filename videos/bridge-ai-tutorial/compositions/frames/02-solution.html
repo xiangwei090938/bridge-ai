@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="02-solution" data-width="1920" data-height="1080" data-duration="8.036">
+  <div class="bg-grid"></div>
+  <div class="glow" style="width:70cqw;height:70cqw;background:radial-gradient(circle, #7C3AED 0%, transparent 70%);top:15cqw;left:15cqw;"></div>
+  <div class="orbit" style="position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);width:30cqw;height:30cqw;">
+    <div class="satellite" style="position:absolute;left:50%;top:0;transform:translate(-50%,-50%);"><div class="icon-chip" style="background:#10A37F;width:5cqw;height:5cqw;font-size:1.6cqw;">C</div></div>
+    <div class="satellite" style="position:absolute;left:100%;top:50%;transform:translate(-50%,-50%);"><div class="icon-chip" style="background:#CC785C;width:5cqw;height:5cqw;font-size:1.6cqw;">Cl</div></div>
+    <div class="satellite" style="position:absolute;left:50%;top:100%;transform:translate(-50%,-50%);"><div class="icon-chip" style="background:#3B82F6;width:5cqw;height:5cqw;font-size:1.6cqw;">Cu</div></div>
+    <div class="satellite" style="position:absolute;left:0;top:50%;transform:translate(-50%,-50%);"><div class="icon-chip" style="background:#7C3AED;width:5cqw;height:5cqw;font-size:1.6cqw;">O</div></div>
+    <div class="logo-center" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);opacity:0;">
+      <img src="assets/logo/logo-horizontal.svg" style="width:22cqw;filter:drop-shadow(0 0 2cqw rgba(0,212,255,0.4));" />
+    </div>
+  </div>
+  <div class="solution-text" style="position:absolute;left:50%;top:72%;transform:translate(-50%,-50%);text-align:center;opacity:0;">
+    <div class="h2 gradient-text">统一管理</div>
+    <div class="body" style="margin-top:1cqw;">模型 · 密钥 · 应用</div>
+  </div>
+  <div class="final-line" style="position:absolute;left:50%;top:86%;transform:translate(-50%,-50%);text-align:center;opacity:0;">
+    <div class="h3">让使用 AI 变得更简单</div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.orbit', {opacity:0, scale:0.8}, {opacity:1, scale:1, duration:0.8, ease:'power3.out'}, 0)
+    .fromTo('.satellite', {opacity:0, scale:0}, {opacity:1, scale:1, duration:0.6, stagger:0.1, ease:'back.out(1.8)'}, 0.3)
+    .to('.satellite', {rotation:90, duration:2.4, ease:'power1.inOut'}, 0.8)
+    .fromTo('.logo-center', {opacity:0, scale:0.5}, {opacity:1, scale:1, duration:0.9, ease:'back.out(1.4)'}, 1.4)
+    .to('.satellite', {scale:0, opacity:0, duration:0.7, ease:'power3.in'}, 2.2)
+    .fromTo('.solution-text', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 2.7)
+    .fromTo('.final-line', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 3.3);
+  window.__timelines = window.__timelines || {}; window.__timelines['02-solution'] = tl;
+</script>
+</body>
+</html>

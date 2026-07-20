@@ -1,0 +1,27 @@
+﻿  async function handleTest() {
+    setTestResult("测试中...");
+    try {
+      const { testConnection } = await import("../services/api");
+      const res = await testConnection(provider);
+      setTestResult("连接成功！" + res);
+    } catch (e: any) {
+      setTestResult("连接失败：" + (e?.toString() || "未知错误"));
+    }
+  }
+
+  async function handleFinish() {
+    try {
+      await setSetting("onboarding_completed", "true");
+      if (apiKey) {
+        const { addModel } = await import("../services/api");
+        await addModel({
+          name: provider === "openai" ? "OpenAI" : provider,
+          modelId: "gpt-4o",
+          baseUrl: baseUrl,
+          apiKey: apiKey,
+          type: "openai"
+        });
+      }
+    } catch (e) { console.error(e); }
+    onComplete();
+  }

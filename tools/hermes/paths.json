@@ -1,0 +1,45 @@
+{
+    "name": "Hermes Desktop",
+    "names": {
+        "zh-Hans": "Hermes 桌面端"
+    },
+    "category": "Desktop",
+    "apiProtocol": [
+        "openai"
+    ],
+    "docs": "https://hermes-agent.nousresearch.com/docs/",
+    "website": "https://github.com/NousResearch/hermes-agent",
+    "command": "hermes",
+    "envVar": "HERMES_HOME",
+    "configDir": "~/.hermes",
+    "configDirAlt": "%LOCALAPPDATA%\\hermes",
+    "configFile": "~/.hermes/config.yaml",
+    "configFileAlt": "%LOCALAPPDATA%\\hermes\\config.yaml",
+    "requireConfigFile": false,
+    "detectByConfigDir": true,
+    "paths": {
+        "win32": [
+            "%LOCALAPPDATA%\\hermes\\hermes-agent\\apps\\desktop\\release\\win-unpacked\\Hermes.exe"
+        ],
+        "darwin": [
+            "~/.hermes/hermes-agent/apps/desktop/release/mac-arm64/Hermes.app/Contents/MacOS/Hermes",
+            "~/.hermes/hermes-agent/apps/desktop/release/mac-x64/Hermes.app/Contents/MacOS/Hermes",
+            "~/.hermes/hermes-agent/apps/desktop/release/mac/Hermes.app/Contents/MacOS/Hermes",
+            "~/.hermes/hermes-agent/apps/desktop/release/mac-universal/Hermes.app/Contents/MacOS/Hermes"
+        ],
+        "linux": [
+            "~/.hermes/hermes-agent/apps/desktop/release/linux-unpacked/hermes",
+            "~/.hermes/hermes-agent/apps/desktop/release/linux-unpacked/Hermes",
+            "~/.hermes/hermes-agent/apps/desktop/release/linux-arm64-unpacked/hermes",
+            "~/.hermes/hermes-agent/apps/desktop/release/linux-arm64-unpacked/Hermes"
+        ]
+    },
+    "skillsPath": {
+        "darwin": [
+            "~/.hermes/skills"
+        ],
+        "linux": [
+            "~/.hermes/skills"
+        ]
+    }
+}

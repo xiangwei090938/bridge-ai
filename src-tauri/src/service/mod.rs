@@ -1,0 +1,22 @@
+﻿pub mod key_vault;
+pub mod model_mgr;
+pub mod provider_mgr;
+pub mod tool_detector;
+pub mod sync_engine;
+pub mod premium;
+pub mod skill_store;
+pub mod web_search;
+pub mod local_model;
+pub mod ai_draw;
+pub mod news_service;
+
+pub use key_vault::KeyVault;
+pub use model_mgr::ModelManager;
+pub use provider_mgr::ProviderManager;
+pub use tool_detector::ToolDetector;
+pub use sync_engine::SyncEngine;
+pub use premium::PremiumManager;
+pub use skill_store::SkillStore;
+pub use web_search::WebSearch;
+pub use local_model::LocalModelDeploy;
+pub use ai_draw::AIDraw;

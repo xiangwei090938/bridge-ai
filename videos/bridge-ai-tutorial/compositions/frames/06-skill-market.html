@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="06-skill-market" data-width="1920" data-height="1080" data-duration="8.684">
+  <div class="bg-grid"></div>
+  <div class="h2" style="position:absolute;left:50%;top:10cqw;transform:translateX(-50%);text-align:center;">技能商店</div>
+  <div class="body" style="position:absolute;left:50%;top:16cqw;transform:translateX(-50%);text-align:center;">下载 AI 技能包，扩展你的能力</div>
+  <div class="skills-grid" style="position:absolute;left:10cqw;top:26cqw;width:80cqw;display:grid;grid-template-columns:repeat(4,1fr);gap:2cqw;">
+    <div class="skill-card card" style="padding:2cqw;text-align:center;opacity:0;"><div class="icon-chip" style="background:var(--gradient);width:5cqw;height:5cqw;font-size:2cqw;margin:0 auto;">{}</div><div class="h3" style="font-size:1.8cqw;margin-top:1cqw;">编程助手</div><div class="body" style="font-size:1cqw;margin-top:0.5cqw;">代码补全 / 重构 / 解释</div><div class="tag" style="margin-top:1cqw;">下载</div></div>
+    <div class="skill-card card" style="padding:2cqw;text-align:center;opacity:0;"><div class="icon-chip" style="background:var(--gradient);width:5cqw;height:5cqw;font-size:2cqw;margin:0 auto;">✎</div><div class="h3" style="font-size:1.8cqw;margin-top:1cqw;">写作助手</div><div class="body" style="font-size:1cqw;margin-top:0.5cqw;">润色 / 续写 / 翻译</div><div class="tag" style="margin-top:1cqw;">下载</div></div>
+    <div class="skill-card card" style="padding:2cqw;text-align:center;opacity:0;"><div class="icon-chip" style="background:var(--gradient);width:5cqw;height:5cqw;font-size:2cqw;margin:0 auto;">◈</div><div class="h3" style="font-size:1.8cqw;margin-top:1cqw;">数据分析</div><div class="body" style="font-size:1cqw;margin-top:0.5cqw;">CSV / 图表 / 洞察</div><div class="tag" style="margin-top:1cqw;">下载</div></div>
+    <div class="skill-card card" style="padding:2cqw;text-align:center;opacity:0;"><div class="icon-chip" style="background:var(--gradient);width:5cqw;height:5cqw;font-size:2cqw;margin:0 auto;">🖼</div><div class="h3" style="font-size:1.8cqw;margin-top:1cqw;">AI 绘图</div><div class="body" style="font-size:1cqw;margin-top:0.5cqw;">文生图 / 图像编辑</div><div class="tag" style="margin-top:1cqw;background:var(--secondary);">会员</div></div>
+  </div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  tl.fromTo('.h2, .body', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, stagger:0.15, ease:'power3.out'}, 0.2)
+    .fromTo('.skill-card', {opacity:0, y:40, scale:0.9}, {opacity:1, y:0, scale:1, duration:0.7, stagger:0.12, ease:'back.out(1.4)'}, 0.7)
+    .to('.skill-card', {y:-8, duration:0.4, ease:'power1.inOut', yoyo:true, repeat:1}, 2.0);
+  window.__timelines = window.__timelines || {}; window.__timelines['06-skill-market'] = tl;
+</script>
+</body>
+</html>

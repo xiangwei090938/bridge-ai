@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<link rel="stylesheet" href="compositions/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+</head>
+<body>
+<div id="root" data-composition-id="05-step3-chat" data-width="1920" data-height="1080" data-duration="12.284">
+  <div class="bg-grid"></div>
+  <div class="micro" style="position:absolute;left:5cqw;top:4cqw;">STEP 03</div>
+  <div class="h2" style="position:absolute;left:5cqw;top:7cqw;">AI 对话</div>
+  <div class="chat-panel card" style="position:absolute;left:5cqw;top:16cqw;width:90cqw;height:68cqw;">
+    <div style="padding:2cqw 2cqw 0;">
+      <div class="msg ai" style="display:flex;gap:1.5cqw;opacity:0;">
+        <div class="icon-chip" style="background:var(--gradient);width:3.5cqw;height:3.5cqw;font-size:1.2cqw;">B</div>
+        <div style="max-width:60cqw;padding:1.5cqw;background:rgba(255,255,255,0.05);border-radius:1cqw 1cqw 1cqw 0.2cqw;">
+          <div class="body" style="color:var(--text);font-size:1.4cqw;">你好！我是 Bridge AI，很高兴能帮到你。</div>
+        </div>
+      </div>
+      <div class="msg user" style="display:flex;justify-content:flex-end;gap:1.5cqw;margin-top:1.5cqw;opacity:0;">
+        <div style="max-width:60cqw;padding:1.5cqw;background:var(--primary);border-radius:1cqw 1cqw 0.2cqw 1cqw;">
+          <div style="color:var(--bg);font-size:1.4cqw;">你好，Bridge AI</div>
+        </div>
+      </div>
+      <div class="msg ai reply" style="display:flex;gap:1.5cqw;margin-top:1.5cqw;opacity:0;">
+        <div class="icon-chip" style="background:var(--gradient);width:3.5cqw;height:3.5cqw;font-size:1.2cqw;">B</div>
+        <div style="max-width:64cqw;">
+          <div class="body reply-text" style="color:var(--text);font-size:1.4cqw;line-height:1.6;"></div>
+          <div class="code-block" style="display:none;margin-top:1cqw;padding:1.2cqw;background:#0F111A;border:1px solid rgba(0,212,255,0.2);border-radius:0.8cqw;font-family:monospace;font-size:1.1cqw;color:#A5B4FC;">
+            <div style="color:#F472B6;">function</div> hello() {<br>  console.<span style="color:#60A5FA;">log</span>(<span style="color:#34D399;">"Hello Bridge AI"</span>);<br>}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="input-bar" style="position:absolute;left:2cqw;right:2cqw;bottom:2cqw;display:flex;gap:1cqw;align-items:center;padding:1cqw 1.5cqw;border-radius:1cqw;background:rgba(255,255,255,0.05);border:1px solid var(--card-border);opacity:0;">
+      <div class="input-text body" style="flex:1;color:var(--muted);font-size:1.3cqw;"></div>
+      <div class="send pill" style="padding:0.6cqw 1.5cqw;font-size:1.2cqw;">发送</div>
+    </div>
+  </div>
+  <div class="cursor" style="left:10cqw;top:80cqw;opacity:0;"></div>
+</div>
+<script>
+  const tl = gsap.timeline({paused:true});
+  const reply = "你好！我是 Bridge AI，很高兴能帮到你。我可以帮你写代码、查资料、做翻译，还能一键复制消息。";
+  tl.fromTo('.chat-panel', {opacity:0, y:20}, {opacity:1, y:0, duration:0.6, ease:'power3.out'}, 0.2)
+    .fromTo('.msg.ai', {opacity:0, y:10}, {opacity:1, y:0, duration:0.5, ease:'power3.out'}, 0.5)
+    .to('.input-bar', {opacity:1, duration:0.4}, 1.2)
+    .to('.input-text', {text:{value:"你好，Bridge AI"}, duration:1.0, ease:'none'}, 1.5)
+    .to('.send', {background:'var(--secondary)', duration:0.2}, 2.3)
+    .to('.cursor', {opacity:1, x:'72cqw', y:'1cqw', duration:0.5, ease:'power3.inOut'}, 2.4)
+    .to('.cursor', {scale:0.85, duration:0.15, yoyo:true, repeat:1}, 2.8)
+    .to('.msg.user', {opacity:1, y:0, duration:0.4}, 2.9)
+    .to('.input-text', {text:{value:""}, duration:0.2}, 3.0)
+    .to('.msg.ai.reply', {opacity:1, duration:0.3}, 3.3)
+    .to('.reply-text', {text:{value:reply}, duration:2.2, ease:'none'}, 3.5)
+    .set('.code-block', {display:'block'})
+    .fromTo('.code-block', {opacity:0, y:10}, {opacity:1, y:0, duration:0.5, ease:'power3.out'}, 5.5);
+  window.__timelines = window.__timelines || {}; window.__timelines['05-step3-chat'] = tl;
+</script>
+</body>
+</html>

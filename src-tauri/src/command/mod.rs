@@ -1,0 +1,11 @@
+﻿pub mod model_cmd;
+pub mod chat_cmd;
+pub mod config_cmd;
+pub mod tool_cmd;
+pub mod premium_cmd;
+pub mod skill_cmd;
+pub mod search_cmd;
+pub mod model_deploy_cmd;
+pub mod draw_cmd;
+pub mod open_url_cmd;
+pub mod news_cmd;
