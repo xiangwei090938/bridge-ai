@@ -50,6 +50,9 @@ jobs:
       - name: Install frontend dependencies
         run: npm install
 
+      - name: Frontend build
+        run: npm run build
+
       - name: Rust check (cargo check)
         run: cargo check
         working-directory: src-tauri
@@ -57,9 +60,6 @@ jobs:
       - name: Rust build (cargo build)
         run: cargo build
         working-directory: src-tauri
-
-      - name: Frontend build
-        run: npm run build
 
   release:
     name: Release (${{ matrix.os }})
