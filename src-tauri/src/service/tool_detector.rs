@@ -657,6 +657,7 @@ impl ToolDetector {
     }
 
     /// Scan registry by display name hints (for tools with multiple possible names)
+    #[cfg(target_os = "windows")]
     fn scan_registry_by_display_names(display_names: &[String]) -> Option<String> {
         for name in display_names {
             if let Some(path) = Self::scan_registry(name) {
