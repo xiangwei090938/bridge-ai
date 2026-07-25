@@ -63,8 +63,20 @@ pub struct ToolInfo {
 
 pub struct ToolDetector;
 
+// Cache to avoid repeated expensive scans
+static SCAN_CACHE: std::sync::OnceLock<Vec<ToolInfo>> = std::sync::OnceLock::new();
+
 impl ToolDetector {
     pub fn scan_all() -> Vec<ToolInfo> {
+        if let Some(cached) = SCAN_CACHE.get() {
+            return cached.clone();
+        }
+        let results = Self::do_scan_all();
+        let _ = SCAN_CACHE.set(results.clone());
+        results
+    }
+
+    fn do_scan_all() -> Vec<ToolInfo> {
         let defs = Self::builtin_definitions();
         defs.into_iter().map(|def| {
             let (ipath, cpath) = Self::detect_tool(&def);
