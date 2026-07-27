@@ -1,4 +1,4 @@
-﻿use tauri::State;
+use tauri::State;
 use crate::core::error::Result;
 use crate::AppState;
 
@@ -29,3 +29,17 @@ pub fn set_setting(state: State<'_, AppState>, key: String, value: String) -> Re
     Ok(())
 }
 
+
+
+#[tauri::command]
+pub async fn get_proxy_status() -> Result<String> {
+    let url = format!("http://127.0.0.1:{}/health", crate::PROXY_PORT);
+    match reqwest::Client::builder().no_proxy().timeout(std::time::Duration::from_secs(3)).build() {
+        Ok(cl) => match cl.get(&url).send().await {
+            Ok(r) if r.status().is_success() => Ok("running".into()),
+            Ok(r) => Ok(format!("error: unexpected status {}", r.status())),
+            Err(e) => Ok(format!("error: {}", e)),
+        },
+        Err(e) => Ok(format!("error: {}", e)),
+    }
+}
